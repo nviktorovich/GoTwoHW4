@@ -10,12 +10,11 @@ import (
 //убедиться, что при каждом запуске программы итоговое число равно 1000.
 
 var cnt int
-var mx sync.Mutex
 var wg sync.WaitGroup
 
 func main() {
 	c1 := make(chan int, 1000)
-	for i:=0; i<1000; i++{
+	for i := 0; i < 1000; i++ {
 		wg.Add(1)
 		go func(c chan int) {
 			defer wg.Done()

@@ -5,7 +5,11 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 )
+
+//Написать программу, которая при получении в канал сигнала SIGTERM
+//останавливается не позднее, чем за одну секунду (установить таймаут).
 
 func main() {
 
@@ -17,6 +21,7 @@ func main() {
 	go func() {
 		sig := <-sigs
 		fmt.Println()
+		time.Sleep(time.Second * 3)
 		fmt.Println(sig)
 		done <- true
 	}()
